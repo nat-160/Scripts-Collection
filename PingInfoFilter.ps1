@@ -42,7 +42,8 @@ if ($NoOverwrite){
 }
 
 # Generate output file
-(Get-Content $FileSelector.FileName) -split "`n" | Where-Object {$_ -match ("(Crane|$" + $(((Get-Content ".\input.txt") -split "`n" | ForEach-Object {if ($_.trim()) {$_.trim()}}) -join "|") + ")")} | Out-File $OutputFile
+(Get-Content $FileSelector.FileName) -split "`n" | Where-Object {$_ -match ("(Crane|" + $(((Get-Content ".\input.txt") -split "`n" | ForEach-Object {if ($_.trim()) {$_.trim()}}) -join "|") + ")")} | Out-File $OutputFile
 
 # Start PingInfoView
+
 Start-Process ./PingInfoView.exe
